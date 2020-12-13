@@ -38,12 +38,9 @@ public class BeautyUtils {
             throw new IOException("美颜失败");
         }
     }
+
     /**
-     * 必须在子线程中执行
-     *
-     * @param beautyPlusPlusBean
-     * @return
-     * @throws IOException
+     * face++ 美颜
      */
     public static String beautyFacePlusPlus(BeautyPlusPlusBean beautyPlusPlusBean) throws IOException {
         File srcFile = new File(beautyPlusPlusBean.imagePath);
@@ -71,14 +68,7 @@ public class BeautyUtils {
     }
 
     /**
-     * api_key	string	是	应用 api_key
-     * sign	string	是	参数签名
-     * img	file	img, img_base64, url 3选1	图片文件
-     * img_base64	string	img, img_base64, url 3选1	图片文件 base64 编码
-     * url	string	img, img_base64, url 3选1	图片URL
-     * args	json	否	微整形参数, 详见下表
-     * timestamp	int	否	unix时间戳, 从接口 /timestamp 获取
-     * output_format	string	否	结果图片返回形式, 可选值 [url: 图片链接, base64: 图片文件 base64 编码], 默认以 url 返回
+     * 人脸微整形
      */
     public static String beautyFaceTutuPlastic(BeautyTutuPlasticBean beautyTutuPlasticBean) throws IOException {
         String sign = getSign(beautyTutuPlasticBean.getParams(), "dIvT_s-PxJoeBbw_yknAfHpzP0zHAgvy");
@@ -86,7 +76,7 @@ public class BeautyUtils {
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("api_key", "pQi0-1aLIV5vJPxS-G3lvTFL-B3NfxoH")
-                .addFormDataPart("sign", sign)//美白程度 取值范围 [0-100]
+                .addFormDataPart("sign", sign)
                 .addFormDataPart("img", srcFile.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), srcFile))
                 .build();
         Request request = new Request.Builder()
@@ -98,14 +88,7 @@ public class BeautyUtils {
     }
 
     /**
-     * api_key	string	是	应用 api_key
-     * sign	string	是	参数签名
-     * img	file	img, img_base64, url 3选1	图片文件
-     * img_base64	string	img, img_base64, url 3选1	图片文件 base64 编码
-     * url	string	img, img_base64, url 3选1	图片URL
-     * args	json	否	微整形参数, 详见下表
-     * timestamp	int	否	unix时间戳, 从接口 /timestamp 获取
-     * output_format	string	否	结果图片返回形式, 可选值 [url: 图片链接, base64: 图片文件 base64 编码], 默认以 url 返回
+     * 人像美颜
      */
     public static String beautyFaceTutuBeautify(BeautyTutuBeautifyBean beautyTutuPlasticBean) throws IOException {
         String sign = getSign(beautyTutuPlasticBean.getParams(), "dIvT_s-PxJoeBbw_yknAfHpzP0zHAgvy");

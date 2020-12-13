@@ -7,7 +7,8 @@ public class Main {
     static final String IMAGE_PATH = "/Users/yangkang/Downloads/IMG_20201212_192740.jpeg";
 
     public static void main(String[] args) throws IOException {
-        testTutuPlastic();
+//        testTutuPlastic();
+        testFacePlusPlus();
     }
 
     private static void testTutuPlastic() throws IOException {
